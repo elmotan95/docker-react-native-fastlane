@@ -15,7 +15,7 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}
 # NodeJS
 ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION_NAME latest-dubnium
-ENV NODE_VERSION 10.x
+ENV NODE_VERSION 12.x
 
 #Ruby
 # https://www.ruby-lang.org/en/news/2020/03/31/ruby-2-7-1-released/
