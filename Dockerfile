@@ -5,8 +5,8 @@ LABEL maintainer "yevhen.piotrovskyi@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive
 
 # Android & Gradle
-ENV GRADLE_URL http://services.gradle.org/distributions/gradle-3.3-all.zip
-ENV GRADLE_HOME /usr/local/gradle-3.3
+ENV GRADLE_URL http://services.gradle.org/distributions/gradle-6.3-all.zip
+ENV GRADLE_HOME /usr/local/gradle-6.3
 ENV ANDROID_SDK_URL http://dl.google.com/android/android-sdk_r24.3.3-linux.tgz
 ENV ANDROID_HOME /usr/local/android-sdk-linux
 ENV ANDROID_SDK_COMPONENTS_LATEST platform-tools,build-tools-23.0.1,build-tools-25.0.3,android-23,android-25,extra-android-support,extra-android-m2repository,extra-google-m2repository
@@ -14,7 +14,7 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}
 
 # NodeJS
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION_NAME latest-dubnium
+ENV NODE_VERSION_NAME latest-erbium
 ENV NODE_VERSION 12.x
 
 #Ruby
@@ -23,12 +23,12 @@ ENV RUBY_MAJOR 2.7
 ENV RUBY_VERSION 2.7.1
 ENV RUBY_DOWNLOAD_SHA256 b224f9844646cc92765df8288a46838511c1cec5b550d8874bd4686a904fcee7
 
-ENV SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip" \
+ENV SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip" \
     ANDROID_HOME="/usr/local/android-sdk" \
     ANDROID_VERSION=28 \
-    ANDROID_BUILD_TOOLS_VERSION=27.0.3
+    ANDROID_BUILD_TOOLS_VERSION=28.0.3
 
-ENV FASTLANE_VERSION 2.146.1
+ENV FASTLANE_VERSION 2.176.0
 
 # Download Android SDK
 RUN mkdir "$ANDROID_HOME" .android \
@@ -111,7 +111,7 @@ RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
 ENV PATH $PATH:$BUNDLE_BIN:${ANDROID_HOME}/tools:$ANDROID_HOME/platform-tools:${GRADLE_HOME}/bin
 
 RUN gem install fastlane -v ${FASTLANE_VERSION} \
-  && gem install fastlane-plugin-appicon fastlane-plugin-android_change_string_app_name fastlane-plugin-humanable_build_number \
+  && gem install fastlane-plugin-load_json fastlane-plugin-appcenter fastlane-plugin-increment_version_code fastlane-plugin-increment_version_name \
   && gem update --system
 
 # Remove Build Deps
