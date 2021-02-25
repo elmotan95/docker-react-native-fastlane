@@ -106,6 +106,8 @@ ENV BUNDLE_PATH="$GEM_HOME" \
   BUNDLE_APP_CONFIG="$GEM_HOME"
 RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
   && chmod 777 "$GEM_HOME" "$BUNDLE_BIN"
+  
+RUN npm install -g yarn
 
 # Path
 ENV PATH $PATH:$BUNDLE_BIN:${ANDROID_HOME}/tools:$ANDROID_HOME/platform-tools:${GRADLE_HOME}/bin
@@ -118,4 +120,4 @@ RUN gem install fastlane -v ${FASTLANE_VERSION} \
 RUN apt-get purge -y --auto-remove $buildDeps
 
 # Output versions
-RUN node -v && npm -v && ruby -v && fastlane -v
+RUN node -v && npm -v && ruby -v && fastlane -v && yarn -v
